@@ -28,6 +28,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseCors(p => p.AllowAnyOrigin());
+app.UseCors(p => p.AllowAnyHeader());
+
 app.UseAntiforgery();
 
 app.UseAuthorization();

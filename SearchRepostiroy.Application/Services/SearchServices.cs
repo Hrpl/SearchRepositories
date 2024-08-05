@@ -86,9 +86,12 @@ public class SearchServices : ISearchRepository
 
             HttpClient httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("User-Agent", "YourAppName/1.0");
+
             jsonString = await httpClient.GetStringAsync($"https://api.github.com/search/repositories?q={subject}");
 
             //тут надо сохранить объект в бд
+
+
             var responseMessage = await httpClient.PutAsJsonAsync("http://localhost:5080/api/find", new SearchRequest()
             {
                 SearchString = subject,
