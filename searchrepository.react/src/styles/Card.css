@@ -1,0 +1,24 @@
+a{
+	text-decoration: none;
+	color: black;
+}
+
+.card:hover {
+	animation: card-shadow 0.15s ease-in-out forwards;
+}
+
+.card-header {
+	background-color: #6ab970;
+	color: white;
+}
+
+.no-wrap{
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+@keyframes card-shadow {
+	to {
+		box-shadow: 4px 4px 2px #aaa;
+	}
+}

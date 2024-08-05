@@ -10,7 +10,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddCors();
+
 builder.Services.AddAntiforgery();
 
 builder.Services.AddDbContext<SearchRepositoryDBContext>();
@@ -27,8 +27,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors(p => p.AllowAnyOrigin());
-app.UseCors(p => p.AllowAnyHeader());
+app.UseCors(p => p.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
 app.UseAntiforgery();
 

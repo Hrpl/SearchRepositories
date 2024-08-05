@@ -13,5 +13,5 @@ public class Repository
     public int Stargazers { get; set; } 
     public int Watchers { get; set; }
     public string HtmlUrl { get; set; }
-
+    public string Description { get; set; } 
 }

@@ -120,7 +120,8 @@ public class SearchServices : ISearchRepository
                 Autor = item["owner"]["login"].ToString(),
                 Stargazers = item["stargazers_count"].Value<int>(),
                 Watchers = item["watchers_count"].Value<int>(),
-                HtmlUrl = item["html_url"].ToString()
+                HtmlUrl = item["html_url"].ToString(),
+                Description = item["description"].ToString()
             });
         }
 
