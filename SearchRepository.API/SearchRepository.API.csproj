@@ -4,14 +4,19 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>1cf61770-9312-46dc-a4b9-96bbd5ecc482</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SearchRepository.Domen\SearchRepository.Domen.csproj" />
+    <ProjectReference Include="..\SearchRepository.Infrastructure\SearchRepository.Infrastructure.csproj" />
     <ProjectReference Include="..\SearchRepostiroy.Application\SearchRepository.Application.csproj" />
   </ItemGroup>
 

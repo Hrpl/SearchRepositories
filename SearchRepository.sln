@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchRepository.Infrastruc
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "searchrepository.react", "SearchRepository.React\searchrepository.react.esproj", "{710EA27B-693A-434B-A51D-66DFCC74316F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchRepository.Application", "SearchRepostiroy.Application\SearchRepository.Application.csproj", "{60986D66-EAB4-46B2-B604-220585580BC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchRepository.Application", "SearchRepostiroy.Application\SearchRepository.Application.csproj", "{60986D66-EAB4-46B2-B604-220585580BC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchRepository.API", "SearchRepository.API\SearchRepository.API.csproj", "{F6198E32-AE58-4192-87CE-7A50202AD997}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchRepository.API", "SearchRepository.API\SearchRepository.API.csproj", "{89434119-C5FF-4E80-B3F4-0EB6FCF33881}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{B5AC8931-8D48-414E-940A-FF8AF2F7A533}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +39,14 @@ Global
 		{60986D66-EAB4-46B2-B604-220585580BC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60986D66-EAB4-46B2-B604-220585580BC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60986D66-EAB4-46B2-B604-220585580BC7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F6198E32-AE58-4192-87CE-7A50202AD997}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F6198E32-AE58-4192-87CE-7A50202AD997}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F6198E32-AE58-4192-87CE-7A50202AD997}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F6198E32-AE58-4192-87CE-7A50202AD997}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89434119-C5FF-4E80-B3F4-0EB6FCF33881}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89434119-C5FF-4E80-B3F4-0EB6FCF33881}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89434119-C5FF-4E80-B3F4-0EB6FCF33881}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89434119-C5FF-4E80-B3F4-0EB6FCF33881}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5AC8931-8D48-414E-940A-FF8AF2F7A533}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5AC8931-8D48-414E-940A-FF8AF2F7A533}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5AC8931-8D48-414E-940A-FF8AF2F7A533}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5AC8931-8D48-414E-940A-FF8AF2F7A533}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
