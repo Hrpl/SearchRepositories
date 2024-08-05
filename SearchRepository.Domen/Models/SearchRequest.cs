@@ -10,7 +10,6 @@ namespace SearchRepository.Domen.Models;
 public class SearchRequest
 {
     public int Id { get; set; }
-
     public string SearchString { get; set; }
     public string JsonResponse {  get; set; } 
 }
