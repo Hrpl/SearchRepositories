@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SearchRepository.Domen.Models;
-namespace SearchRepostiroy.Application.Interface;
+namespace SearchRepository.Application.Interface;
 
-internal interface ISearchRepository
+public interface ISearchRepository
 {
-    public Task<SearchRequest> GetSearchAsync(string subject);
+    public Task<List<Repository>> GetSearchAsync(string subject);
 
     public Task AddSearchAsync(SearchRequest searchRequest);
 
