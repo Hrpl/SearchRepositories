@@ -1,15 +1,11 @@
 ﻿﻿networks:
   network:
-    driver: bridge
-    
-volumes:
-  postgres_data:
-  sql_data:
+
 
 services:
   
   nginx:
-    image: nginx:stable-alphine
+    image: nginx:stable-alpine
     restart: always
     ports:
       - "80:80"
@@ -22,7 +18,8 @@ services:
       - react
   
   react:
-    build: .
+    build: 
+      context: ./searchrepository.react
     container_name: react
     ports:
       - '3000:3000'
