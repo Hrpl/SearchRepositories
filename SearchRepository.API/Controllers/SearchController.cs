@@ -5,7 +5,7 @@ using SearchRepository.Domen.Models;
 
 namespace SearchRepository.API.Controllers;
 
-[Route("api/find")]
+[Route("api/find/")]
 [ApiController]
 public class SearchController : ControllerBase
 {
@@ -37,6 +37,20 @@ public class SearchController : ControllerBase
         {
             await _searchRepository.AddSearchAsync(searchRequest);
             return Created();
+        }
+        catch
+        {
+            return BadRequest();
+        }
+    }
+
+    [HttpDelete("{request}")]
+    public async Task<ActionResult> DeleteSearchRequest([FromRoute] string request)
+    {
+        try
+        {
+            await _searchRepository.DeleteSearchAsync(request);
+            return NoContent();
         }
         catch
         {

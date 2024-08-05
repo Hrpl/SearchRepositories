@@ -1,4 +1,4 @@
-//import axios from "../../node_modules/axios"
+
 import axios from "axios"
 
 export async function apiGetRepository(subject) {
@@ -16,4 +16,13 @@ export async function apiGetRepository(subject) {
 
     return data.data
     
+}
+
+export async function apiDeleteRepository(subject) {
+
+    axios.delete(`http://localhost:5080/api/find/${subject}`).then((resp) => {
+        if (resp.status == 204) {
+            alert("Delete request")
+        }
+    }).catch((error) => alert("No such request exists"))
 }

@@ -60,9 +60,29 @@ public class SearchServices : ISearchRepository
     /// <param name="subject"></param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public Task DeleteSearchAsync(string subject)
+    public async Task DeleteSearchAsync(string subject)
     {
-        throw new NotImplementedException();
+        var request = await _dbContext.SearchRequests.Where(s => s.SearchString == subject).FirstOrDefaultAsync();
+        if (request != null)
+        {
+            _dbContext.SearchRequests.Remove(request);
+
+            try
+            {
+                await _dbContext.SaveChangesAsync();
+                _logger.LogInformation($"Удаление запроса со строкой {subject}");
+            }
+            catch 
+            {
+                _logger.LogError($"Ошибка удаление запроса {subject}");
+                throw new Exception();
+            }
+        }
+        else
+        {
+            _logger.LogError($"Нет строки {subject} в базе данных");
+            throw new Exception();
+        }
     }
 
 

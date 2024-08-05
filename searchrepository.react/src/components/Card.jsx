@@ -5,11 +5,11 @@ export default function Card(props) {
         <a href={props.repository.htmlUrl}>
             <div className="card">
                 <div className="card-header d-flex">
-                    <h5 className="card-title">{props.repository.name}</h5>
+                    <h5 className="card-title no-wrap">{props.repository.name}</h5>
                 </div>
                 <div className="card-body row ">
                     <div className="col-6 d-flex flex-column">
-                        <span>{props.repository.autor}</span>
+                        <span >{props.repository.autor}</span>
                         <span className="no-wrap mt-2">{props.repository.description}</span>
                     </div>
 
