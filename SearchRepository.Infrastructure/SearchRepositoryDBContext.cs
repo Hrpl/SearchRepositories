@@ -15,6 +15,10 @@ public class SearchRepositoryDBContext : DbContext
 
     public DbSet<SearchRequest> SearchRequests { get; set; }
 
+    public SearchRepositoryDBContext()
+    {
+        Database.Migrate();
+    }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseNpgsql("Host=localhost;Port=5435;Database=postgres;Username=postgres;Password=12345");
