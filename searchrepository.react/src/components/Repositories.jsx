@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { apiGetRepository, apiDeleteRepository } from '../services/api-requests.js'
-import Card  from '../components/Card.jsx'
+import Card from './Card.jsx'
+import Search from './Search.jsx'
 
 export default function Repositories() {
 
@@ -9,7 +10,6 @@ export default function Repositories() {
 
     async function searchButtonHeandler()  {
         const resp = await apiGetRepository(searchString)
-        console.log(resp)
         setRepositories(resp)
     }
 
@@ -19,11 +19,7 @@ export default function Repositories() {
 
     return (
         <>
-            <section className="d-flex justify-content-center">
-                <input className="form-control w-25 m-2" onInput={(e) => setSearchString(e.target.value)}></input>
-                <button className="btn btn-success m-2 rounded-4" onClick={searchButtonHeandler}>Search</button>
-                <button className="btn btn-danger m-2 rounded-4" onClick={deleteButtonHeandler}>Delete</button>
-            </section>
+            <Search setSearchString={setSearchString} searchButtonHandler={searchButtonHeandler} deleteButtonHandler={deleteButtonHeandler}></Search>
 
             {
                 repositories != undefined ?
