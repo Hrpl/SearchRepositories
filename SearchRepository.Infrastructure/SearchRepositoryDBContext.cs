@@ -20,6 +20,12 @@ public class SearchRepositoryDBContext : DbContext
     {
         Database.Migrate();
     }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseNpgsql("Host=db;Port=5432;Database=postgres;Username=postgres;Password=12345");
+    }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
