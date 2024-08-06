@@ -11,8 +11,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 var configuration = builder.Configuration;
 
-var secreKey = 
-
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -24,6 +22,7 @@ builder.Services.AddAntiforgery();
 
 builder.Services.AddDbContext<SearchRepositoryDBContext>();
 builder.Services.AddScoped<ISearchRepository, SearchServices>();
+builder.Services.AddScoped<ILoginServices, LoginServices>();
 
 builder.Services.AddAuthorization();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

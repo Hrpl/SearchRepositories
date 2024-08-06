@@ -15,7 +15,7 @@ public class SearchRepositoryDBContext : DbContext
 {
 
     public DbSet<SearchRequest> SearchRequests { get; set; }
-    
+    public DbSet<User> Users { get; set; }
 
     public SearchRepositoryDBContext(DbContextOptions<SearchRepositoryDBContext> opt) : base(opt)
     {
@@ -24,16 +24,6 @@ public class SearchRepositoryDBContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql("Host=db;Port=5432;Database=postgres;Username=postgres;Password=12345");
-    }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        base.OnModelCreating(modelBuilder);
-        modelBuilder.Entity<SearchRequest>(ConfigureRepository);
-    }
-    private static void ConfigureRepository(EntityTypeBuilder<SearchRequest> builder)
-    {
-        builder.Property(x => x.Id).IsRequired();
+        optionsBuilder.UseNpgsql("Host=localhost;Port=5435;Database=postgres;Username=postgres;Password=12345");
     }
 }
