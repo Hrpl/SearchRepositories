@@ -6,7 +6,7 @@ export async function authorize(username, password) {
     try {
         const { data } = await api.get(`user/login/${username}/${password}`);
 
-        localStorage.setItem('jwt', data.access);
+        localStorage.setItem('jwt', data.token);
         apiSetHeader('Authorization', `Bearer ${data.token}`);
         return data.token;
         
@@ -27,7 +27,7 @@ export async function apiGetRepository(subject) {
         }
     }
 
-    const data = await axios(config)
+    const data = await api(config)
 
     return data.data
     
@@ -35,7 +35,7 @@ export async function apiGetRepository(subject) {
 
 export async function apiDeleteRepository(subject) {
 
-    axios.delete(`http://localhost:5080/api/find/${subject}`).then((resp) => {
+    api.delete(`http://localhost:5080/api/find/${subject}`).then((resp) => {
         if (resp.status == 204) {
             alert("Delete request")
         }

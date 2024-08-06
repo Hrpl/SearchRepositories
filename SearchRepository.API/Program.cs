@@ -9,8 +9,6 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var configuration = builder.Configuration;
-
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -31,9 +29,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = true,
-            ValidIssuer = configuration["Jwt:Issuer"],
+            ValidIssuer = JwtOption.ISSUER,
             ValidateAudience = true,
-            ValidAudience = configuration["Jwt:Audience"],
+            ValidAudience = JwtOption.AUDIENCE,
             ValidateLifetime = true,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtOption.KEY))
     };
