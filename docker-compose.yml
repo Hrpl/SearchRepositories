@@ -21,7 +21,6 @@ services:
       - searchrepository.api
     
   searchrepository.api:
-    image: ${DOCKER_REGISTRY-}searchrepositoryapi
     build:
       context: .
       dockerfile: SearchRepository.API/Dockerfile
