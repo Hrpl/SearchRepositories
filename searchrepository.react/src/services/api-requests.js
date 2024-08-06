@@ -1,7 +1,6 @@
 
 /*87.242.85.8*/
 import api, { apiSetHeader } from './api'
-const key = localStorage.getItem('jwt')
 export async function authorize(username, password) {
     try {
         const { data } = await api.get(`user/login/${username}/${password}`);
@@ -24,7 +23,7 @@ export async function apiGetRepository(subject) {
         data: subject,
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${key}`
+            'Authorization': `Bearer ${localStorage.getItem('jwt')}`
         }
     }
 
@@ -39,7 +38,7 @@ export async function apiDeleteRepository(subject) {
     api.delete({
         url: `find/${subject}`,
         headers: {
-            'Authorization': `Bearer ${key}`
+            'Authorization': `Bearer ${localStorage.getItem('jwt')}`
         }
     }).then((resp) => {
         if (resp.status == 204) {

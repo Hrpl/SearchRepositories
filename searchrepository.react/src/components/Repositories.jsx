@@ -19,6 +19,7 @@ export default function Repositories() {
         //после удаления из базы сбрасывает данные на странице
         setSearchString("")
         setRepositories(undefined)
+        location.reload()
     }
 
     return (

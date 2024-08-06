@@ -26,12 +26,18 @@ services:
     build:
       context: .
       dockerfile: SearchRepository.API/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=5080
     ports:
       - '5080:5080'
     networks:
       - network
     depends_on:
       - db
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
 
   react:
     build: 
