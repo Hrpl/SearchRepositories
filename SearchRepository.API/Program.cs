@@ -13,6 +13,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddAntiforgery();
 
+builder.Services.CreateContextService(builder.Configuration);
+
 builder.Services.AddDbContext<SearchRepositoryDBContext>();
 builder.Services.AddScoped<ISearchRepository, SearchServices>();
 
