@@ -5,7 +5,7 @@ export async function apiGetRepository(subject) {
 
     const config = {
         method: 'post',
-        url: 'http://localhost:5080/api/find',
+        url: 'http://87.242.85.8:5080/api/find',
         data: subject,
         headers: {
             'Content-Type': 'application/json'
@@ -20,7 +20,7 @@ export async function apiGetRepository(subject) {
 
 export async function apiDeleteRepository(subject) {
 
-    axios.delete(`http://localhost:5080/api/find/${subject}`).then((resp) => {
+    axios.delete(`http://87.242.85.8:5080/api/find/${subject}`).then((resp) => {
         if (resp.status == 204) {
             alert("Delete request")
         }
