@@ -28,9 +28,9 @@ public class LoginServices : ILoginServices
     /// </summary>
     /// <param name="login"></param>
     /// <returns></returns>
-    public async Task<User> Login(string login)
+    public async Task<User> Login(string login, string password)
     {
-        var response = await _dbContext.Users.Where(u => u.Name == login).FirstOrDefaultAsync();
+        var response = await _dbContext.Users.Where(u => u.Name == login && u.Password == password).FirstOrDefaultAsync();
         return response; 
     }
 }

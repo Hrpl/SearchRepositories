@@ -1,0 +1,49 @@
+body {
+	min-height: 100%;
+}
+
+.place {
+	background-color: #fff;
+	border-radius: 1rem;
+	height: 100%;
+	width: 30%;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-self: center;
+}
+
+.boldLabel {
+	font-weight: 600;
+	padding-left: 0.5rem;
+}
+
+.x {
+	height: 2.5rem;
+	width: 2.5rem;
+	font-weight: 800;
+}
+
+	.x:hover {
+		border-radius: 90%;
+		background-color: #ccc;
+	}
+
+
+.input-container {
+	position: relative;
+	display: inline-block;
+}
+
+	.input-container input[type="password"] {
+		padding-right: 30px; /* Распространение поля ввода для места под иконку */
+	}
+
+.toggle-password {
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	cursor: pointer;
+}

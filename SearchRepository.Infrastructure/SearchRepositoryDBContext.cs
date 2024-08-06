@@ -17,7 +17,7 @@ public class SearchRepositoryDBContext : DbContext
     public DbSet<SearchRequest> SearchRequests { get; set; }
     public DbSet<User> Users { get; set; }
 
-    public SearchRepositoryDBContext(DbContextOptions<SearchRepositoryDBContext> opt) : base(opt)
+    public SearchRepositoryDBContext(DbContextOptions<SearchRepositoryDBContext> opt)
     {
         Database.Migrate();
     }

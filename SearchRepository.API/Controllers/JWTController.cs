@@ -22,14 +22,14 @@ namespace SearchRepository.API.Controllers
         }
 
         // GET: api/<JWTController>
-        [HttpGet("login/{username}")]
-        public async Task<ActionResult> Get([FromRoute] string username)
+        [HttpGet("login/{username}/{password}")]
+        public async Task<ActionResult> Get([FromRoute] string username, [FromRoute] string password)
         {
-            var user = await _loginServices.Login(username);
+            var user = await _loginServices.Login(username, password);
 
             if (user == null) return Unauthorized(); 
 
-            var claims = new List<Claim> { new Claim(ClaimTypes.Name, username) };
+            var claims = new List<Claim> { new Claim(ClaimTypes.Name, username, password) };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtOption.KEY));
 
@@ -45,7 +45,8 @@ namespace SearchRepository.API.Controllers
             var response = new
             {
                 token = encodedJwt,
-                login = username
+                login = username,
+                password = password
             };
 
             return Ok(response);

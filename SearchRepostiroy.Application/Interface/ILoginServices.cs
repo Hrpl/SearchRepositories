@@ -9,5 +9,5 @@ namespace SearchRepository.Application.Interface;
 
 public interface ILoginServices
 {
-    public Task<User> Login(string login);
+    public Task<User> Login(string login, string password);
 }
