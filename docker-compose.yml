@@ -11,16 +11,18 @@ services:
 
   nginx:
     container_name: nginx
-    image: nginx:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile
     restart: always
     ports:
       - "80:80"
     networks:
       - network
     depends_on:
-      - searchrepository.api
+      - api
     
-  searchrepository.api:
+  api:
     build:
       context: .
       dockerfile: SearchRepository.API/Dockerfile
@@ -42,7 +44,7 @@ services:
     networks:
       - network
     depends_on:
-      - searchrepository.api
+      - api
 
   db:
     image: postgres:latest

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication.OAuth;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
 using SearchRepository.Application.Interface;
 using SearchRepository.Application.Services;
@@ -10,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 var configuration = builder.Configuration;
 
-var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:SecretKey"]));
+var secreKey = 
 
 // Add services to the container.
 
@@ -35,8 +36,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateAudience = true,
             ValidAudience = configuration["Jwt:Audience"],
             ValidateLifetime = true,
-            IssuerSigningKey = key
-        };
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtOption.KEY))
+    };
     });
 
 var app = builder.Build();
@@ -54,8 +55,18 @@ app.UseCors(p => p.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
 app.UseAntiforgery();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
 
 app.Run();
+
+public static class JwtOption
+{
+    public const string ISSUER = "MyAuthServer"; 
+    public const string AUDIENCE = "MyAuthClient";
+    public const string KEY = "qaz123wsx456edc789rfv000tgbdsgfjorjjwe324325432435435opewk";   // ключ для шифрации
+    public static SymmetricSecurityKey GetSymmetricSecurityKey() =>
+        new SymmetricSecurityKey(Encoding.UTF8.GetBytes(KEY));
+}

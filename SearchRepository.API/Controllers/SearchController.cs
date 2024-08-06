@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SearchRepository.Application.Interface;
 using SearchRepository.Domen.Models;
@@ -16,6 +17,7 @@ public class SearchController : ControllerBase
         _searchRepository = searchRepository;
     }
 
+    [Authorize]
     [HttpPost]
     public async Task<ActionResult<SearchRequest>> GetSearchRequest([FromBody] string subject) {
         try
@@ -44,6 +46,7 @@ public class SearchController : ControllerBase
         }
     }
 
+    [Authorize]
     [HttpDelete("{request}")]
     public async Task<ActionResult> DeleteSearchRequest([FromRoute] string request)
     {

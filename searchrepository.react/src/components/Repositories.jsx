@@ -14,7 +14,11 @@ export default function Repositories() {
     }
 
     async function deleteButtonHeandler() {
-        await apiDeleteRepository(searchString)  
+        await apiDeleteRepository(searchString) 
+
+        //после удаления из базы сбрасывает данные на странице
+        setSearchString("")
+        setRepositories(undefined)
     }
 
     return (
