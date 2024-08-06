@@ -15,6 +15,7 @@ public class SearchRepositoryDBContext : DbContext
 {
 
     public DbSet<SearchRequest> SearchRequests { get; set; }
+    
 
     public SearchRepositoryDBContext(DbContextOptions<SearchRepositoryDBContext> opt) : base(opt)
     {
