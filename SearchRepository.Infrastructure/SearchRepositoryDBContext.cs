@@ -16,7 +16,7 @@ public class SearchRepositoryDBContext : DbContext
 
     public DbSet<SearchRequest> SearchRequests { get; set; }
     public DbSet<User> Users { get; set; }
-    public SearchRepositoryDBContext(DbContextOptions<SearchRepositoryDBContext> opt) : base(opt)
+    public SearchRepositoryDBContext(DbContextOptions<SearchRepositoryDBContext> opt) 
     {
         Database.Migrate();
     }
@@ -25,20 +25,5 @@ public class SearchRepositoryDBContext : DbContext
     {
         optionsBuilder.UseNpgsql("Host=db;Port=5432;Database=postgres;Username=postgres;Password=12345");
     }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        base.OnModelCreating(modelBuilder);
-        modelBuilder.Entity<User>(ConfigureRepository);
-        modelBuilder.Entity<SearchRequest>(ConfigureRepository);
-        
-    }
-    private static void ConfigureRepository(EntityTypeBuilder<SearchRequest> builder)
-    {
-        builder.Property(x => x.Id).IsRequired();
-    }
-    private static void ConfigureRepository(EntityTypeBuilder<User> builder)
-    {
-        builder.Property(x => x.Id).IsRequired();
-    }
+    
 }

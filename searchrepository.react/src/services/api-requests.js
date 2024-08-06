@@ -1,7 +1,7 @@
-import axios from "axios"
+
 /*87.242.85.8*/
 import api, { apiSetHeader } from './api'
-
+const key = localStorage.getItem('jwt')
 export async function authorize(username, password) {
     try {
         const { data } = await api.get(`user/login/${username}/${password}`);
@@ -17,13 +17,14 @@ export async function authorize(username, password) {
 };
 
 export async function apiGetRepository(subject) {
-
+    
     const config = {
         method: 'post',
-        url: 'http://localhost:5080/api/find',
+        url: 'find',
         data: subject,
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${key}`
         }
     }
 
@@ -35,7 +36,12 @@ export async function apiGetRepository(subject) {
 
 export async function apiDeleteRepository(subject) {
 
-    api.delete(`http://localhost:5080/api/find/${subject}`).then((resp) => {
+    api.delete({
+        url: `find/${subject}`,
+        headers: {
+            'Authorization': `Bearer ${key}`
+        }
+    }).then((resp) => {
         if (resp.status == 204) {
             alert("Delete request")
         }

@@ -19,15 +19,5 @@ if (JWTToken) {
     apiSetHeader('Authorization', `Bearer ${JWTToken}`);
 }
 
-api.interceptors.request.use(config => {
-    // Если пользователь делает запрос и у него нет заголовка с токеном, то...
-    if (!config.defaults.headers['Authorization']) {
-        // Тут пишем редирект если не авторизован
-    }
-
-    return config;
-}, error => {
-    return Promise.reject(error);
-});
 
 export default api;
