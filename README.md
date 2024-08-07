@@ -15,4 +15,6 @@ docker-compose up --build
 
 ## Облако
 
-http://pdnapp.ru/
+http://pdnapp.ru/  
+Login: e@e  
+Password: 123
