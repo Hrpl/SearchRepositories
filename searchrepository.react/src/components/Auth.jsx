@@ -21,6 +21,14 @@ export default function Auth() {
 
         if (token != null) {
             navigate("/search")
+            errorRef.current.hidden = true
+        }
+        else {
+            errorRef.current.hidden = false
+            setUser({
+                login: "",
+                password: ""
+            })
         }
     }
 
@@ -58,10 +66,9 @@ export default function Auth() {
                 </div>
 
                 <section className="row justify-content-center flex-column">
-                    <button className="btn text-white d-flex align-self-center justify-content-center col-md-2 mt-3 mb-0 rounded-5" style={{
+                    <button className="btn btn-success text-white d-flex align-self-center justify-content-center col-md-2 mt-3 mb-0 rounded-5" style={{
                         fontWeight: 600,
-                        margin: "0.5rem",
-                        backgroundColor: "#e60023"
+                        margin: "0.5rem"
                     }}
                         onClick={clickLoginButton}>Enter</button>
                     </section>
