@@ -20,6 +20,12 @@ public class UserRepository : IUserRepository
         _dbContext = dbContext;
     }
 
+    /// <summary>
+    /// Добавить нового пользователя
+    /// </summary>
+    /// <param name="user"></param>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
     public async Task AddUser(User user)
     {
         await _dbContext.Users.AddAsync(user);
@@ -34,6 +40,10 @@ public class UserRepository : IUserRepository
         }
     }
 
+    /// <summary>
+    /// Получить нового пользователя
+    /// </summary>
+    /// <returns></returns>
     public async Task<List<User>> GetUsers()
     {
         return await _dbContext.Users.ToListAsync();

@@ -1,4 +1,18 @@
 # SearchRepository
 
+## Технологии
 
-Для работы БД в Host указать название сервиса БД, а в порт указывать внутренний порт конейнера
+* .NET Core
+* React
+* Bootstrap
+* Docker
+* Postgres
+
+## Запуск
+```cmd
+docker-compose up --build
+```
+
+## Облако
+
+http://pdnapp.ru/
