@@ -1,6 +1,6 @@
 # SearchRepository
 
-## Технологии
+## РўРµС…РЅРѕР»РѕРіРёРё
 
 * .NET Core
 * React
@@ -8,11 +8,11 @@
 * Docker
 * Postgres
 
-## Запуск
+## Р—Р°РїСѓСЃРє
 ```cmd
 docker-compose up --build
 ```
 
-## Облако
+## РћР±Р»Р°РєРѕ
 
 http://pdnapp.ru/
