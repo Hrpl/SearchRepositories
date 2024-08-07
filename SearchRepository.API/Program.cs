@@ -23,6 +23,8 @@ builder.Services.AddAntiforgery();
 builder.Services.AddDbContext<SearchRepositoryDBContext>();
 builder.Services.AddScoped<ISearchRepository, SearchServices>();
 builder.Services.AddScoped<ILoginServices, LoginServices>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
 
 builder.Services.AddAuthorization();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
