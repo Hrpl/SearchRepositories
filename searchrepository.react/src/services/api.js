@@ -5,7 +5,7 @@ const JWTToken = localStorage.getItem('jwt');
 
 // Создать инстанс axios
 const api = axios.create({
-    baseURL: `http://localhost:5080/api/`
+    baseURL: `http://87.242.85.8:5080/api/`
 });
 
 export function apiSetHeader(name, value) {
