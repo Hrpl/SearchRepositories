@@ -94,7 +94,7 @@ public class SearchServices : ISearchRepository
     /// <exception cref="NotImplementedException"></exception>
     public async Task<List<Repository>> GetSearchAsync(string subject)
     {
-        List<Repository> response = new List<Repository>();
+        
         string? jsonString = "";
 
         var request  = await _dbContext.SearchRequests.Where(s => s.SearchString == subject).FirstOrDefaultAsync();
@@ -104,25 +104,14 @@ public class SearchServices : ISearchRepository
             _logger.LogError($"Запрос со строкой {subject} не был найден в хранилище. ");
             _logger.LogInformation("Производится запрос в API GitHub");
 
-            HttpClient httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Add("User-Agent", "YourAppName/1.0");
+            jsonString = await GitHubClient.GetGitHubRepository(subject);
 
-            jsonString = await httpClient.GetStringAsync($"https://api.github.com/search/repositories?q={subject}");
-
-            //тут надо сохранить объект в бд
-
-
-            var responseMessage = await httpClient.PutAsJsonAsync("http://localhost:5080/api/find", new SearchRequest()
+            // если выбросит исключение, то контроллер отловит его
+            await AddSearchAsync(new SearchRequest()
             {
                 SearchString = subject,
                 JsonResponse = jsonString
             });
-
-            if (responseMessage.IsSuccessStatusCode == false)
-            {
-                _logger.LogError("Произошла ошибка при сохранении нового запроса");
-                throw new Exception();
-            }
         }
         else
         {
@@ -130,21 +119,6 @@ public class SearchServices : ISearchRepository
             jsonString = request.JsonResponse;
         }
 
-        var jsonResponse = JObject.Parse(jsonString);
-        var jsonItem = jsonResponse["items"];
-
-        foreach ( var item in jsonItem) {
-            response.Add(new Repository
-            {
-                Name = item["name"].ToString(),
-                Autor = item["owner"]["login"].ToString(),
-                Stargazers = item["stargazers_count"].Value<int>(),
-                Watchers = item["watchers_count"].Value<int>(),
-                HtmlUrl = item["html_url"].ToString(),
-                Description = item["description"].ToString()
-            });
-        }
-
-        return response;
+        return ParseToJson.Parse(jsonString);
     }
 }
