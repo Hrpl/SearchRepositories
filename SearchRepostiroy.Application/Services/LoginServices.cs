@@ -1,15 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using SearchRepository.Domen.Models;
-using SearchRepository.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SearchRepository.Application.Interface;
-
-namespace SearchRepository.Application.Services;
+﻿namespace SearchRepository.Application.Services;
 
 public class LoginServices : ILoginServices
 {

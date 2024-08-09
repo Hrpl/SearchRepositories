@@ -6,11 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-
-using System.Net.Http;
-using System.Net.Http.Json;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -48,7 +43,7 @@ public class SearchServices : ISearchRepository
             catch
             {
                 _logger.LogError($"Произошла ошибка добавления");
-                throw new Exception();
+                throw;
             }
         }
         else throw new Exception();
@@ -75,7 +70,7 @@ public class SearchServices : ISearchRepository
             catch 
             {
                 _logger.LogError($"Ошибка удаление запроса {subject}");
-                throw new Exception();
+                throw;
             }
         }
         else

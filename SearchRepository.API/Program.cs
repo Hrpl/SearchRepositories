@@ -1,10 +1,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authentication.OAuth;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
-using SearchRepository.Application.Interface;
-using SearchRepository.Application.Services;
-using SearchRepository.Infrastructure;
+using SearchRepository.Application;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,10 +16,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddAntiforgery();
 
-builder.Services.AddDbContext<SearchRepositoryDBContext>();
-builder.Services.AddScoped<ISearchRepository, SearchServices>();
-builder.Services.AddScoped<ILoginServices, LoginServices>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddApplicationServices();
 
 
 builder.Services.AddAuthorization();

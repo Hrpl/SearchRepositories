@@ -1,12 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SearchRepository.Application.Interface;
-using SearchRepository.Domen.Models;
-using SearchRepository.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace SearchRepository.Application.Services;
 
@@ -32,7 +24,7 @@ public class UserRepository : IUserRepository
 
         try
         {
-            _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync();
         }
         catch 
         {
